@@ -1,24 +1,51 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+
+import NavbarComponent from "./pages/main/navbar/components/Navbar.component";
+import HomeComponent from "./pages/homepage/components/Home.component";
+import SignUpComponent from "./pages/signup/components/SignUp.component";
+import bg from "./pages/homepage/assets/insurance001.jpg";
+import AboutComponent from "./pages/main/about/components/About.component";
+import SighInComponent from "./pages/signin/components/SighIn.component";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="fooont">
+        <Router>
+          <NavbarComponent/>
+          <Switch>
+            <Route path="/registration">
+              <div className='wrapper'>
+                <SignUpComponent />
+              </div>
+              <AboutComponent/>
+            </Route>
+            <Route path="/login">
+              <div className='wrapper'>
+                <SighInComponent/>
+              </div>
+              <AboutComponent />
+            </Route>
+            <div>
+              <Route path="/">
+                <div className='wrapper'>
+                  <HomeComponent/>
+                </div>
+                <AboutComponent/>
+              </Route>
+            </div>
+          </Switch>
+        </Router>
+      </div>
   );
 }
 
