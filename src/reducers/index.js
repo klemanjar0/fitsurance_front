@@ -3,6 +3,7 @@ import { combineReducers } from 'redux';
 import appReducer from './App.reducer';
 import signupReducer from './SignUp.reducer';
 import loginReducer from './Login.reducer';
+import localeReducer from "./Locale.reducer";
 
 
 export default combineReducers({
@@ -10,4 +11,5 @@ export default combineReducers({
     signup: signupReducer,
     login: loginReducer,
     routing: routerReducer,
+    locale: localeReducer
 })

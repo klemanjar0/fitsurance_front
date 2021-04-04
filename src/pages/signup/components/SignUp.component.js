@@ -1,10 +1,11 @@
 import {Button, Card, Col, Form, InputGroup, Row} from "react-bootstrap";
 import {useState} from "react";
 import AboutComponent from "../../main/about/components/About.component";
-
+import {Link} from "react-router-dom";
 
 function SignUpComponent(){
     const [validated, setValidated] = useState(false);
+    const [user, setUser] = useState({});
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
@@ -104,9 +105,16 @@ function SignUpComponent(){
                             </Form.Group>
                         </Form.Row>
                         <Form.Row>
-                            <Form.Group as={Col} md="12" controlId="validationCustom05">
+                            <Form.Group as={Col} md="6" controlId="validationCustom05">
                                 <Form.Label>Description</Form.Label>
                                 <Form.Control type="text" placeholder="Description (You can justify you blood type, disability, or other)" />
+                            </Form.Group>
+                            <Form.Group as={Col} md="6" controlId="validationCustom05">
+                                <Form.Label>Birthday</Form.Label>
+                                <Form.Control type="text" placeholder="Enter your birth day." pattern="\d{4}-\d{2}-\d{2}" required />
+                                <Form.Control.Feedback type="invalid">
+                                    Please provide a valid birthday like 2021-12-21.
+                                </Form.Control.Feedback>
                             </Form.Group>
                         </Form.Row>
                         <Form.Group>
@@ -118,7 +126,7 @@ function SignUpComponent(){
                         </Form.Group>
                         <Form.File
                             id="custom-file"
-                            label="Pick a photo for your profile"
+                            label="Pick a photo for your profile (unavailable in beta yet)"
                             custom
                         />
                         <Button type="submit" className="mt-5 float-right">Register</Button>
