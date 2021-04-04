@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { setLocale } from '../../../../actions/Locale.actions'
 
+import { EOLocale } from 'eo-locale';
+import { locales } from './Locale'
+
 function NavbarComponent(){
 
     const dispatch = useDispatch();
@@ -19,6 +22,8 @@ function NavbarComponent(){
 
 
     return(
+        <>
+            <EOLocale.Provider language={lang} locales={locales}>
         <Navbar bg="light" variant="light">
             <Container style = {{width:'100%'}}>
                 <Navbar.Brand>
@@ -26,25 +31,25 @@ function NavbarComponent(){
                 </Navbar.Brand>
                 <Nav className="mr-auto">
                     <Nav.Link>
-                        <Link to="/">Home</Link>
+                        <Link to="/"><EOLocale.Text id="home"/></Link>
                     </Nav.Link>
                     <Nav.Link>
-                        <Link to="/">Features</Link>
+                        <Link to="/"><EOLocale.Text id="features"/></Link>
                     </Nav.Link>
                     <Nav.Link>
-                        <Link to="/">Pricing</Link>
+                        <Link to="/"><EOLocale.Text id="pricing"/></Link>
                     </Nav.Link>
                     <Nav.Link>
-                        <Link to="/">Dashboard</Link>
+                        <Link to="/"><EOLocale.Text id="dashboard"/></Link>
                     </Nav.Link>
                 </Nav>
                 <Form inline>
-                    <FormControl type="text" placeholder="Search FitSurance" className="mr-sm-2" />
+                    <FormControl type="text" placeholder={lang === 'en' ? 'Search FitSurance' : 'Пошук на FitSurance'} className="mr-sm-2" />
                     <Button variant="link" style={{ textDecoration: 'none' }}>
-                        <Link to="/login" style={{ textDecoration: 'none' }}>Sign In</Link>
+                        <Link to="/login" style={{ textDecoration: 'none' }}><EOLocale.Text id="signIn"/></Link>
                     </Button>
                     <Button variant="outline-primary">
-                        <Link to="/registration">Sign Up</Link>
+                        <Link to="/registration"><EOLocale.Text id="signUp"/></Link>
                     </Button>
                 </Form>
             </Container>
@@ -53,6 +58,8 @@ function NavbarComponent(){
                 <Button variant={lang === 'ua' ? "outline-secondary" : "outline-primary"} disabled={lang === 'ua'} onClick={setUkrainian}>UA</Button>
             </ButtonGroup>
         </Navbar>
+            </EOLocale.Provider>
+        </>
     );
 }
 export default NavbarComponent;

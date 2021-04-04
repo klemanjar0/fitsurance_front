@@ -1,10 +1,14 @@
 .myh1{
-    font-family: Gotham;
+    font-family: Lato;
     font-style: normal;
     font-size: xxx-large;
 }
 .mytext{
-    font-family: Gotham;
+    font-family: Lato;
     font-style: normal;
     font-size: 16px;
+}
+
+.text{
+    font-family: Lato;
 }

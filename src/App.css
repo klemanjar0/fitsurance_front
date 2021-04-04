@@ -9,19 +9,19 @@
 
 @font-face {
   font-family: 'Lato';
-  src: local('Lato'), url(./fonts/Gotham/Gotham-Light.otf) format('opentype');
+  src: local('Lato'), url(./fonts/GothamRus/GothaProLig.otf) format('opentype');
 }
 
 @font-face {
   font-family: 'Lato';
   font-weight: 900;
-  src: local('Lato'), url(./fonts/Gotham/Gotham-Bold.otf) format('opentype');
+  src: local('Lato'), url(./fonts/GothamRus/GothaProBol.otf) format('opentype');
 }
 
 @font-face {
   font-family: 'Lato';
   font-weight: 900;
-  src: local('Lato'), url(./fonts/Gotham/Gotham-Black.otf) format('opentype');
+  src: local('Lato'), url(./fonts/GothamRus/GothaProReg.otf) format('opentype');
 }
 .App-header {
   background-color: #282c34;

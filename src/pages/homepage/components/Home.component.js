@@ -3,15 +3,23 @@ import './Home.css';
 import {Card, Container, ToastHeader} from "react-bootstrap";
 import ModalHeader from "react-bootstrap/ModalHeader";
 import bg from "../assets/insurance001.jpg";
-import AboutComponent from "../../main/about/components/About.component";
-import DividerComponent from "../../main/divider/components/Divider.component";
 
+import { EOLocale } from 'eo-locale';
+import { locales } from './Locale'
+import {useSelector} from "react-redux";
 
 function HomeComponent(){
+
+    const lang = useSelector(state => state.locale.language)
     const bgstyle = {
-        backgroundColor: "white"
+        backgroundColor: "white",
+
+    }
+    const font = {
+        fontFamily: "Lato"
     }
     return(
+        <EOLocale.Provider language={lang} locales={locales}>
         <div style={bgstyle}>
             <ModalHeader className="bg-white">
                 <h1>
@@ -20,29 +28,28 @@ function HomeComponent(){
             </ModalHeader>
             <div style={{paddingTop : '30px'}}>
                 <h1 className="myh1">
-                    What is Insurance?
+                    <EOLocale.Text id="h1"/>
                 </h1>
                 <div className="mytext">
-                    Insurance is a contract, represented by a policy, in which an individual or entity receives financial protection or reimbursement against losses from an insurance company. The company pools clients' risks to make payments more affordable for the insured.
-                    Insurance policies are used to hedge against the risk of financial losses, both big and small, that may result from damage to the insured or her property, or from liability for damage or injury caused to a third party.
-                    There is a multitude of different types of insurance policies available, and virtually any individual or business can find an insurance company willing to insure them—for a price. The most common types of personal insurance policies are auto, health, homeowners, and life. Most individuals in the United States have at least one of these types of insurance, and car insurance is required by law.
-                </div>
-                <div>
+                    <EOLocale.Text id="description"/>
+                    </div>
+                <div style={font}>
                     <ul>
                         <li>
-                            Insurance is a contract (policy) in which an insurer indemnifies another against losses from specific contingencies or perils.
+                            <EOLocale.Text id="l1"/>
                         </li>
                         <li>
-                            There many types of insurance policies. Life, health, homeowners, and auto are the most common forms of insurance.
+                            <EOLocale.Text id="l2"/>
                         </li>
                         <li>
-                            The core components that make up most insurance policies are the deductible, policy limit, and premium.
+                            <EOLocale.Text id="l3"/>
                         </li>
                     </ul>
                 </div>
                 <img src={bg} style={{width:'1000px',opacity:'80%', borderRadius: "5px"}}/>
             </div>
         </div>
+        </EOLocale.Provider>
     );
 }
 export default HomeComponent;
