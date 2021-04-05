@@ -1,6 +1,7 @@
 import { FetchError } from './FetchError';
 import { configuredFetch } from './configuredFetch';
 import {failedLogin, failedRegister, setCurrentUser} from "../actions/SignUp.actions";
+import {failedLoadMeasures, loadMeasures} from "../actions/Measure.actions";
 
 
 export const fetchRegister = async (user) => {
@@ -61,6 +62,35 @@ export const userLoginRequest = ( payload ) => {
         return fetchLogin(payload).then(
             (data) => {dispatch( {type : setCurrentUser(), payload: {...data.user, token: data.token}})},
             (error)=>{ dispatch({type: failedLogin()})}
+        )
+    }
+};
+
+
+
+export const fetchMeasures = async (id) => {
+    const response = await configuredFetch(
+        `/measure/getByUser/${id}`,
+        'GET',
+
+        {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+    );
+
+    const data = await response.json();
+    if (response.ok) {
+        return JSON.stringify(data);
+    }
+    throw new FetchError({ ...data, status: response.status });
+};
+
+export const getMeasures = ( payload ) => {
+    return (dispatch) => {
+        return fetchMeasures(payload).then(
+            (data) => {dispatch( {type : loadMeasures(), payload: {data}})},
+            (error)=>{ dispatch({type: failedLoadMeasures()})}
         )
     }
 };

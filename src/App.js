@@ -16,6 +16,8 @@ import bg from "./pages/homepage/assets/insurance001.jpg";
 import AboutComponent from "./pages/main/about/components/About.component";
 import SighInComponent from "./pages/signin/components/SighIn.component";
 import bg1 from "./pages/homepage/assets/bg.jpg";
+import DashboardComponent from "./pages/dashboard/Dashboard.component";
+import ProfileComponent from "./pages/profile/Profile.component";
 
 function App() {
 
@@ -32,6 +34,12 @@ function App() {
                 <SignUpComponent />
               </div>
               <AboutComponent/>
+            </Route>
+            <Route path="/dashboard">
+              <DashboardComponent/>
+            </Route>
+            <Route path="/profile">
+              <ProfileComponent/>
             </Route>
             <Route path="/login">
               <div className='wrapper'>

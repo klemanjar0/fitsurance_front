@@ -9,3 +9,6 @@ export const LOGOUT = "LOGOUT"
 
 export const SET_LOCALE = "SET_LOCALE"
 
+export const LOAD_MEASURES = "LOAD_MEASURES"
+export const FAILED_LOAD_MEASURES = "FAILED_LOAD_MEASURES"
+export const CLEAR_MEASURES = "CLEAR_MEASURES"

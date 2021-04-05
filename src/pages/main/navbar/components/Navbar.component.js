@@ -40,9 +40,6 @@ function NavbarComponent(){
                     <Link to="/" style={{ textDecoration: 'none' }}>FitSurance</Link>
                 </Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link>
-                        <Link to="/"><EOLocale.Text id="home"/></Link>
-                    </Nav.Link>
                     {
                         !isAuth && <>
                         <Nav.Link>
@@ -56,7 +53,7 @@ function NavbarComponent(){
 
                     {
                         isAuth && <Nav.Link>
-                            <Link to="/"><EOLocale.Text id="dashboard"/></Link>
+                            <Link to="/dashboard"><EOLocale.Text id="dashboard"/></Link>
                         </Nav.Link>
                     }
 

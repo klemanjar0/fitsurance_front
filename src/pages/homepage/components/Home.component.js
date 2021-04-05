@@ -32,7 +32,7 @@ function HomeComponent(){
 
             <Row>
                 <Col className="h-75 m-auto">
-                    <div style={{width: '80%', margin: '3rem', paddingTop: '5rem', paddingBottom: '5rem', color: 'black', backgroundColor: 'rgba(255,255,255,0.5)', borderRadius: '2rem'}}>
+                    <div style={{width: '80%', marginLeft: '5rem', paddingTop: '5rem', paddingBottom: '5rem', color: 'black', backgroundColor: 'rgba(255,255,255,0.5)', borderRadius: '2rem'}}>
                         <div style={{fontSize: 'xx-large', textAlign: 'center', padding: '1rem'}}>
                             <Alert variant='light'><EOLocale.Text id="alert"/></Alert>
                         </div>
