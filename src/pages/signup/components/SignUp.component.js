@@ -1,17 +1,18 @@
 import {Button, Card, Col, Form, InputGroup, Row} from "react-bootstrap";
-import {useCallback, useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import AboutComponent from "../../main/about/components/About.component";
 import {useDispatch, useSelector} from "react-redux";
 import {setLocale} from "../../../actions/Locale.actions";
 import { Link, Redirect } from 'react-router-dom';
 import {userRegisterRequest} from "../../../thunks/User.thunks";
-
+import { EOLocale } from 'eo-locale';
+import { locales } from './Locale'
 
 function SignUpComponent(){
     const [validated, setValidated] = useState(false);
     const [user, setUser] = useState({});
     const isAuth = useSelector((state) => !!state.currentUser.name);
-
+    const lang = useSelector(state => state.locale.language)
     const dispatch = useDispatch();
 
 
@@ -40,14 +41,15 @@ function SignUpComponent(){
     }
     return(
         <div>
+            <EOLocale.Provider language={lang} locales={locales}>
             <Card bg='light'>
-                <h1 style={{ textAlign: 'left', margin: "1rem"}}><b>Register New User</b></h1>
+                <h1 style={{ textAlign: 'left', margin: "1rem"}}><b><EOLocale.Text id="registerNew"/></b></h1>
                 <hr/>
                 <Card.Body>
                     <Form noValidate validated={validated} onSubmit={handleSubmit}>
                         <Form.Group as={Row} controlId="formHorizontalEmail">
                             <Form.Label column sm={2}>
-                                Email
+                                E-mail
                             </Form.Label>
                             <Col sm={10}>
                                 <Form.Control type="email" placeholder="Email" onChange={(event) => {
@@ -65,7 +67,7 @@ function SignUpComponent(){
 
                         <Form.Group as={Row} controlId="formBasicPassword">
                             <Form.Label column sm={2}>
-                                Password
+                                <EOLocale.Text id="password"/>
                             </Form.Label>
                             <Col sm={10}>
                                 <Form.Control type="password" placeholder="Password" onChange={(event) => {
@@ -89,7 +91,7 @@ function SignUpComponent(){
                     <Form noValidate validated={validated} onSubmit={handleSubmit}>
                         <Form.Row>
                             <Form.Group as={Col} md="4" controlId="validationCustom01">
-                                <Form.Label>First name</Form.Label>
+                                <Form.Label><EOLocale.Text id="firstname"/></Form.Label>
                                 <Form.Control
                                     required
                                     type="text"
@@ -102,10 +104,9 @@ function SignUpComponent(){
                                     }}
                                     placeholder="First name"
                                 />
-                                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group as={Col} md="4" controlId="validationCustom02">
-                                <Form.Label>Last name</Form.Label>
+                                <Form.Label><EOLocale.Text id="lastname"/></Form.Label>
                                 <Form.Control
                                     required
                                     type="text"
@@ -118,10 +119,9 @@ function SignUpComponent(){
                                     }}
                                     placeholder="Last name"
                                 />
-                                <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group as={Col} md="4" controlId="validationCustomUsername">
-                                <Form.Label>Username</Form.Label>
+                                <Form.Label><EOLocale.Text id="username"/></Form.Label>
                                 <InputGroup hasValidation>
                                     <InputGroup.Prepend>
                                         <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
@@ -147,7 +147,7 @@ function SignUpComponent(){
                         </Form.Row>
                         <Form.Row>
                             <Form.Group as={Col} md="6" controlId="validationCustom03">
-                                <Form.Label>Phone</Form.Label>
+                                <Form.Label><EOLocale.Text id="phone"/></Form.Label>
                                 <Form.Control type="text" placeholder="Phone" onChange={(event) => {
                                     setUser(
                                         (prevState) => {
@@ -160,7 +160,7 @@ function SignUpComponent(){
                                 </Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group as={Col} md="6" controlId="validationCustom04">
-                                <Form.Label>Sex</Form.Label>
+                                <Form.Label><EOLocale.Text id="sex"/></Form.Label>
                                 <Form.Control as="select" onChange={(event) => {
                                     setUser(
                                         (prevState) => {
@@ -176,7 +176,7 @@ function SignUpComponent(){
                         </Form.Row>
                         <Form.Row>
                             <Form.Group as={Col} md="6" controlId="validationCustom05">
-                                <Form.Label>Description</Form.Label>
+                                <Form.Label><EOLocale.Text id="description"/></Form.Label>
                                 <Form.Control type="text" onChange={(event) => {
                                     setUser(
                                         (prevState) => {
@@ -186,7 +186,7 @@ function SignUpComponent(){
                                 }} placeholder="Description (You can justify you blood type, disability, or other)" />
                             </Form.Group>
                             <Form.Group as={Col} md="6" controlId="validationCustom06">
-                                <Form.Label>Birthday</Form.Label>
+                                <Form.Label><EOLocale.Text id="birthday"/></Form.Label>
                                 <Form.Control type="text" placeholder="Enter your birth day." onChange={(event) => {
                                     setUser(
                                         (prevState) => {
@@ -202,7 +202,7 @@ function SignUpComponent(){
                         <Form.Group>
                             <Form.Check
                                 required
-                                label="Agree to terms and conditions"
+                                label={lang === 'en' ? 'Agree to terms and conditions' : 'Приймаю умови використання'}
                                 feedback="You must agree before submitting."
                             />
                         </Form.Group>
@@ -218,10 +218,11 @@ function SignUpComponent(){
                                 )
                             }}
                         />
-                        <Button type="submit" className="mt-5 float-right" onClick={registerUser}>Register</Button>
+                        <Button type="submit" className="mt-5 float-right" onClick={registerUser}><EOLocale.Text id="register"/></Button>
                     </Form>
                 </Card.Body>
             </Card>
+            </EOLocale.Provider>
         </div>
     );
 }

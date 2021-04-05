@@ -22,7 +22,7 @@ function AboutComponent() {
 
     return (
         <EOLocale.Provider language={lang} locales={locales}>
-        <div style={aboutStyle}>
+        <div style={aboutStyle} className="wrapper">
                 <DividerComponent/>
                 <Container>
                     <Row>

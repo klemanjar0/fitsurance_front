@@ -5,12 +5,13 @@ import AboutComponent from "../../main/about/components/About.component";
 import {useDispatch, useSelector} from "react-redux";
 import {userLoginRequest, userRegisterRequest} from "../../../thunks/User.thunks";
 import {Redirect} from "react-router-dom";
-
+import { EOLocale } from 'eo-locale';
+import { locales } from './Locale'
 
 function SighInComponent(){
     const [userLog, setUserLog] = useState({});
     const isAuth = useSelector((state) => !!state.currentUser.name);
-
+    const lang = useSelector(state => state.locale.language)
     const dispatch = useDispatch();
 
     const loginUser = () => {
@@ -31,13 +32,14 @@ function SighInComponent(){
     }
 
     return(
-        <div style={{minHeight: 'calc(72vh - 50px)'}}>
+        <div style={{minHeight: 'calc(65vh - 50px)'}}>
+            <EOLocale.Provider language={lang} locales={locales}>
             <Card bg='light'>
-                <h1 style={{float: "Left", margin: "12px"}}><b>Log In</b></h1>
+                <h1 style={{float: "Left", margin: "12px"}}><b><EOLocale.Text id="log"/></b></h1>
                 <Card.Body>
                     <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
+                            <Form.Label>Email</Form.Label>
                             <Form.Control type="email" onChange={(event) => {
                                 setUserLog(
                                     (prevState) => {
@@ -46,12 +48,12 @@ function SighInComponent(){
                                 )
                             }} placeholder="Enter email" />
                             <Form.Text className="text-muted">
-                                We'll never share your email with anyone else.
+                                <EOLocale.Text id="tint"/>
                             </Form.Text>
                         </Form.Group>
 
                         <Form.Group controlId="formBasicPassword">
-                            <Form.Label>Password</Form.Label>
+                            <Form.Label><EOLocale.Text id="password"/></Form.Label>
                             <Form.Control type="password" onChange={(event) => {
                                 setUserLog(
                                     (prevState) => {
@@ -61,15 +63,15 @@ function SighInComponent(){
                             }} placeholder="Password" />
                         </Form.Group>
                         <Form.Group controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Check me out" />
+                            <Form.Check type="checkbox" label={lang === 'en' ? "Check me out" : 'Залишатися у системi'} />
                         </Form.Group>
                         <Button variant="primary" type="submit" onClick={loginUser} className="mt-5 float-right">
-                            Log In
+                            <EOLocale.Text id="login"/>
                         </Button>
                     </Form>
                 </Card.Body>
             </Card>
-
+            </EOLocale.Provider>
         </div>
     );
 }
