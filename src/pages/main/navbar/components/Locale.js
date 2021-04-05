@@ -10,7 +10,7 @@ export const locales = [
             search: 'Search FitSurance',
             signIn: 'Sign In',
             signUp: 'Sign Up',
-
+            signOut: 'Sign Out'
         }
     },
     {
@@ -23,6 +23,7 @@ export const locales = [
             search: 'Пошук на FitSurance',
             signIn: 'Увійти',
             signUp: 'Реєстрація',
+            signOut: 'Вийти'
         }
     },
 ];

@@ -8,14 +8,24 @@ import {Redirect} from "react-router-dom";
 
 
 function SighInComponent(){
-    const [user, setUser] = useState({});
+    const [userLog, setUserLog] = useState({});
     const isAuth = useSelector((state) => !!state.currentUser.name);
 
     const dispatch = useDispatch();
 
     const loginUser = () => {
-        return dispatch(userLoginRequest(user));
+        return dispatch(userLoginRequest(userLog));
     }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+    };
+
     if (isAuth) {
         return (<Redirect to="/"/>);
     }
@@ -25,11 +35,11 @@ function SighInComponent(){
             <Card bg='light'>
                 <h1 style={{float: "Left", margin: "12px"}}><b>Log In</b></h1>
                 <Card.Body>
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control type="email" onChange={(event) => {
-                                setUser(
+                                setUserLog(
                                     (prevState) => {
                                         return {...prevState, email: event.target.value}
                                     }
@@ -43,7 +53,7 @@ function SighInComponent(){
                         <Form.Group controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" onChange={(event) => {
-                                setUser(
+                                setUserLog(
                                     (prevState) => {
                                         return {...prevState, password: event.target.value}
                                     }

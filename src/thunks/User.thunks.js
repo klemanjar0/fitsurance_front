@@ -51,7 +51,6 @@ export const fetchLogin = async (user) => {
 
     const data = await response.json();
     if (response.ok) {
-        alert(data)
         return data;
     }
     throw new FetchError({ ...data, status: response.status });
@@ -60,7 +59,7 @@ export const fetchLogin = async (user) => {
 export const userLoginRequest = ( payload ) => {
     return (dispatch) => {
         return fetchLogin(payload).then(
-            (data) => { dispatch({type : setCurrentUser(), payload: {...data.user, token: data.token}})},
+            (data) => {dispatch( {type : setCurrentUser(), payload: {...data.user, token: data.token}})},
             (error)=>{ dispatch({type: failedLogin()})}
         )
     }
