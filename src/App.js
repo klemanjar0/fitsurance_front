@@ -15,9 +15,13 @@ import SignUpComponent from "./pages/signup/components/SignUp.component";
 import bg from "./pages/homepage/assets/insurance001.jpg";
 import AboutComponent from "./pages/main/about/components/About.component";
 import SighInComponent from "./pages/signin/components/SighIn.component";
+import bg1 from "./pages/homepage/assets/bg.jpg";
 
 function App() {
 
+  const style = {
+    backgroundImage : `url("`+bg1+`")`
+  }
   return (
       <div className="fooont">
         <Router>
@@ -37,7 +41,7 @@ function App() {
             </Route>
             <div>
               <Route path="/">
-                <div className='wrapper'>
+                <div style={style}>
                   <HomeComponent/>
                 </div>
                 <AboutComponent/>

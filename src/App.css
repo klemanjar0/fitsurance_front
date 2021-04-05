@@ -6,6 +6,9 @@
   height: 40vmin;
   pointer-events: none;
 }
+div {
+  font-family: Lato;
+}
 
 @font-face {
   font-family: 'Lato';

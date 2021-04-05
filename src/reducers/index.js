@@ -1,15 +1,13 @@
 import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
 import appReducer from './App.reducer';
-import signupReducer from './SignUp.reducer';
-import loginReducer from './Login.reducer';
 import localeReducer from "./Locale.reducer";
+import currentUserReducer from "./CurrentUser.reducer";
 
 
 export default combineReducers({
     app: appReducer,
-    signup: signupReducer,
-    login: loginReducer,
+    currentUser: currentUserReducer,
     routing: routerReducer,
     locale: localeReducer
 })

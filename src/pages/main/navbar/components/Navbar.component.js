@@ -24,7 +24,7 @@ function NavbarComponent(){
     return(
         <>
             <EOLocale.Provider language={lang} locales={locales}>
-        <Navbar bg="light" variant="light">
+        <Navbar bg="light" variant="light" sticky="top">
             <Container style = {{width:'100%'}}>
                 <Navbar.Brand>
                     <Link to="/" style={{ textDecoration: 'none' }}>FitSurance</Link>
@@ -53,7 +53,7 @@ function NavbarComponent(){
                     </Button>
                 </Form>
             </Container>
-            <ButtonGroup aria-label="language">
+            <ButtonGroup aria-label="language" style={{paddingBlock: '5px', marginBlock: '5px'}}>
                 <Button variant={lang === 'en' ? "outline-secondary" : "outline-primary"} disabled={lang === 'en'} onClick={setEnglish}>EN</Button>
                 <Button variant={lang === 'ua' ? "outline-secondary" : "outline-primary"} disabled={lang === 'ua'} onClick={setUkrainian}>UA</Button>
             </ButtonGroup>
