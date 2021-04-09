@@ -38,6 +38,7 @@ function SecretComponent() {
                                     Don't ever think I can forget.
                                 </span>
                             </Badge>
+                            <br/>
                             <Badge variant="dark">
                                 <span style={styles.text}>
                                     And let cactus shine.
