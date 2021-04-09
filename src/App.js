@@ -18,6 +18,7 @@ import SighInComponent from "./pages/signin/components/SighIn.component";
 import bg1 from "./pages/homepage/assets/bg.jpg";
 import DashboardComponent from "./pages/dashboard/Dashboard.component";
 import ProfileComponent from "./pages/profile/Profile.component";
+import SecretComponent from "./pages/main/info/components/SecretPage.component";
 
 function App() {
 
@@ -34,6 +35,9 @@ function App() {
                 <SignUpComponent />
               </div>
               <AboutComponent/>
+            </Route>
+            <Route path="/aboutus">
+              <SecretComponent/>
             </Route>
             <Route path="/dashboard">
               <DashboardComponent/>
@@ -55,6 +59,7 @@ function App() {
                 <AboutComponent/>
               </Route>
             </div>
+
           </Switch>
         </Router>
       </div>

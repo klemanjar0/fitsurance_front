@@ -28,7 +28,11 @@ function AboutComponent() {
                     <Row>
                         <Col>
                             <h1 className="mt-4">
-                                <Badge variant="dark">FitSurance</Badge>
+                                <Badge variant="dark">
+                                    <Link to="/aboutus" style={{ textDecoration: 'none', color: 'white' }}>
+                                        FitSurance
+                                    </Link>
+                                </Badge>
                             </h1>
                             © 2021
                         </Col>
