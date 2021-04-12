@@ -1,6 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from "react";
+import React, {useEffect} from "react";
 
 import {
   BrowserRouter as Router,
@@ -19,8 +19,24 @@ import bg1 from "./pages/homepage/assets/bg.jpg";
 import DashboardComponent from "./pages/dashboard/Dashboard.component";
 import ProfileComponent from "./pages/profile/Profile.component";
 import SecretComponent from "./pages/main/info/components/SecretPage.component";
+import {useSelector, useDispatch} from "react-redux";
+
+import storage from "./store/sessionStore";
+import {setCurrentUser} from "./actions/SignUp.actions";
+
 
 function App() {
+
+  const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.currentUser)
+
+  useEffect(()=>{
+      if(!currentUser.name && storage.loadUser()) {
+        dispatch({ type: setCurrentUser(), payload: storage.loadUser() });
+      } else {
+        storage.setUser(currentUser);
+      }
+  })
 
   const style = {
     backgroundImage : `url("`+bg1+`")`

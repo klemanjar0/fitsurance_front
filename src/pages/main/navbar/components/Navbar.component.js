@@ -8,6 +8,7 @@ import { setLocale } from '../../../../actions/Locale.actions'
 import { EOLocale } from 'eo-locale';
 import { locales } from './Locale'
 import {clearCurrentUser} from "../../../../actions/SignUp.actions";
+import storage from "../../../../store/sessionStore";
 
 function NavbarComponent(){
 
@@ -27,6 +28,7 @@ function NavbarComponent(){
 
     const logoutUser = () => {
         dispatch({type: clearCurrentUser()})
+        storage.clearUser();
         return (<Redirect to="/"/>);
     }
 
