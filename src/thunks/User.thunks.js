@@ -1,7 +1,14 @@
 import { FetchError } from './FetchError';
 import { configuredFetch } from './configuredFetch';
 import {failedLogin, failedRegister, setCurrentUser} from "../actions/SignUp.actions";
-import {failedLoadMeasures, loadMeasures} from "../actions/Measure.actions";
+import {
+    failedLoadMeasures,
+    failedLoadPulse,
+    failedLoadSteps,
+    loadMeasures,
+    loadPulse,
+    loadSteps
+} from "../actions/Measure.actions";
 
 
 export const fetchRegister = async (user) => {
@@ -81,7 +88,7 @@ export const fetchMeasures = async (id) => {
 
     const data = await response.json();
     if (response.ok) {
-        return JSON.stringify(data);
+        return JSON.parse(JSON.stringify(data));
     }
     throw new FetchError({ ...data, status: response.status });
 };
@@ -91,6 +98,61 @@ export const getMeasures = ( payload ) => {
         return fetchMeasures(payload).then(
             (data) => {dispatch( {type : loadMeasures(), payload: {data}})},
             (error)=>{ dispatch({type: failedLoadMeasures()})}
+        )
+    }
+};
+
+export const fetchSteps = async (id) => {
+    const response = await configuredFetch(
+        `/user/${id}/getsleep`,
+        'GET',
+
+        {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+    );
+
+    const data = await response.json();
+
+    if (response.ok) {
+        return JSON.parse(JSON.stringify(data));
+    }
+    throw new FetchError({ ...data, status: response.status });
+};
+export const getSteps = ( payload ) => {
+    return (dispatch) => {
+        return fetchSteps(payload).then(
+            (data) => {dispatch( {type : loadSteps(), payload: {data}})},
+            (error)=>{ dispatch({type: failedLoadSteps()})}
+        )
+    }
+};
+
+
+export const fetchPulse = async (id) => {
+    const response = await configuredFetch(
+        `/user/${id}/getpulse`,
+        'GET',
+
+        {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+    );
+
+    const data = await response.json();
+
+    if (response.ok) {
+        return JSON.parse(JSON.stringify(data));
+    }
+    throw new FetchError({ ...data, status: response.status });
+};
+export const getPulse = ( payload ) => {
+    return (dispatch) => {
+        return fetchPulse(payload).then(
+            (data) => {dispatch( {type : loadPulse(), payload: {data}})},
+            (error)=>{ dispatch({type: failedLoadPulse()})}
         )
     }
 };

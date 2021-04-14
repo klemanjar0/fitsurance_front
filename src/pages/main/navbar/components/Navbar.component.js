@@ -1,5 +1,5 @@
-import React, {useCallback, useState} from "react";
-import {Button, ButtonGroup, Container, Form, FormControl, Nav, Navbar, ToggleButton} from "react-bootstrap";
+import React, {useCallback, useEffect, useState} from "react";
+import {Badge, Button, ButtonGroup, Container, Form, FormControl, Nav, Navbar, ToggleButton} from "react-bootstrap";
 import './Navbar.css';
 import {BrowserRouter as Router, Link, Redirect} from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,6 +16,8 @@ function NavbarComponent(){
 
     const userCurrent = useSelector((state) => state.currentUser);
 
+    const discount = useSelector((state) => state.app.discount);
+
     const dispatch = useDispatch();
     const lang = useSelector(state => state.locale.language)
     const setEnglish = useCallback(() => {
@@ -31,7 +33,9 @@ function NavbarComponent(){
         storage.clearUser();
         return (<Redirect to="/"/>);
     }
+    useEffect(()=>{
 
+    },[discount])
     return(
         <>
             <EOLocale.Provider language={lang} locales={locales}>
@@ -47,16 +51,18 @@ function NavbarComponent(){
                         <Nav.Link>
                             <Link to="/"><EOLocale.Text id="features"/></Link>
                         </Nav.Link>
-                        <Nav.Link>
-                        <Link to="/"><EOLocale.Text id="pricing"/></Link>
-                        </Nav.Link>
+
                         </>
                     }
 
                     {
-                        isAuth && <Nav.Link>
+                        isAuth &&<> <Nav.Link>
                             <Link to="/dashboard"><EOLocale.Text id="dashboard"/></Link>
                         </Nav.Link>
+                        <Nav.Link>
+                        <Link to="/"><EOLocale.Text id="pricing"/></Link>
+                        </Nav.Link>
+                        </>
                     }
 
                 </Nav>
@@ -65,7 +71,7 @@ function NavbarComponent(){
 
                     {
                         isAuth ?
-                            <Button variant="link" onClick={logoutUser} style={{ textDecoration: 'none' }}>
+                            <Button variant="link" onClick={logoutUser} style={{ textDecoration: 'none', color: 'red' }}>
                                 <EOLocale.Text id="signOut"/>
                             </Button> :
                             <Button variant="link" style={{ textDecoration: 'none' }}>
@@ -75,6 +81,7 @@ function NavbarComponent(){
 
                     <Button variant="outline-primary">
                         {isAuth ? <Link to="/profile">{userCurrent.name}</Link> : <Link to="/registration"><EOLocale.Text id="signUp"/></Link>}
+                        {isAuth && <Badge style={{marginLeft: '10px'}} variant="success">{discount}%</Badge>}
                     </Button>
                 </Form>
             </Container>

@@ -57,6 +57,7 @@ function App() {
             </Route>
             <Route path="/dashboard">
               <DashboardComponent/>
+              <AboutComponent/>
             </Route>
             <Route path="/profile">
               <ProfileComponent/>
