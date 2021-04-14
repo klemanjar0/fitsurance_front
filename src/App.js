@@ -23,6 +23,7 @@ import {useSelector, useDispatch} from "react-redux";
 
 import storage from "./store/sessionStore";
 import {setCurrentUser} from "./actions/SignUp.actions";
+import PricingComponent from "./pages/pricing/Pricing.component";
 
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
             </Route>
             <Route path="/profile">
               <ProfileComponent/>
+              <AboutComponent/>
             </Route>
             <Route path="/login">
               <div className='wrapper'>
@@ -68,14 +70,17 @@ function App() {
               </div>
               <AboutComponent />
             </Route>
-            <div>
+            <Route path="/pricing">
+              <PricingComponent/>
+              <AboutComponent/>
+            </Route>
               <Route path="/">
                 <div style={style}>
                   <HomeComponent/>
                 </div>
                 <AboutComponent/>
               </Route>
-            </div>
+
 
           </Switch>
         </Router>

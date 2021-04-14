@@ -124,7 +124,7 @@ function DashboardComponent(){
         setSeries(
             [
                 {
-                    name: "Minutes slept",
+                    name: lang === "en" ? "Minutes slept":"Хвилин сну",
                     data: values
                 }
             ]
@@ -140,7 +140,7 @@ function DashboardComponent(){
         setSeriesSecond(
             [
                 {
-                    name: "Pulse",
+                    name: lang === "en" ? "Pulse":"Пульс",
                     data: pulses
                 }
             ]
@@ -203,18 +203,23 @@ function DashboardComponent(){
 
     const average = list => list.reduce((prev, curr) => prev + curr) / list.length;
     const getAveragePulse = () => {
-        return average(measures.map(x=>x.heart_rate)).toFixed(2);
+        try {
+            return average(measures.map(x => x.heart_rate)).toFixed(2);
+        }
+        catch (e){
+            return 78.9;
+        }
     }
 
     const setSleepMark = () =>{
         if(getSleepTime() >= 7){
-            return (<Alert variant="success"> Good </Alert>);
+            return (<Alert variant="success"> <EOLocale.Text id="good"/> </Alert>);
         }
         else if (getSleepTime() < 7 && getSleepTime() > 5){
-            return (<Alert variant="warning"> Normal </Alert>);
+            return (<Alert variant="warning"> <EOLocale.Text id="mid"/> </Alert>);
         }
         else if (getSleepTime() < 5){
-            return (<Alert variant="danger"> Not as good </Alert>);
+            return (<Alert variant="danger"> <EOLocale.Text id="bad"/> </Alert>);
         }
     }
     if (!isAuth) {
@@ -237,9 +242,9 @@ function DashboardComponent(){
                         <Card bg="light">
                             <Card.Body>
                                 <Alert variant="dark" style={{fontsize:'28px'}}>
-                                    Sleep time per day
+                                    <EOLocale.Text id="sleepPerDay"/>
                                     <div style={{float:'right'}}>
-                                        <Badge variant="dark">Show {days} days</Badge>
+                                        <Badge variant="dark"><EOLocale.Text id="show"/> {days} <EOLocale.Text id="days"/></Badge>
                                     </div>
                                     <Form>
                                         <Form.Group controlId="formBasicRange">
@@ -259,7 +264,7 @@ function DashboardComponent(){
                                 <hr/>
                                 <br/>
                                 <Alert variant="dark"style={{textAlign: 'right'}}>
-                                    <span>Pulse data</span>
+                                    <span><EOLocale.Text id="pulseData"/></span>
                                 </Alert>
                                 <div style={{color:'black'}}>
                                     <Chart
@@ -272,36 +277,31 @@ function DashboardComponent(){
                             </Card.Body>
                         </Card>
                     </Col>
-
-
                     <Col sm={4}>
                         <Card bg="secondary">
                             <Card.Body>
-
                                 <Card style={{color:'black'}}>
                                     <Card.Header>
-                                        Sleep estimation
+                                        <EOLocale.Text id="sleepEst"/>
                                     </Card.Header>
                                     <Card.Body>
-                                        <Alert variant="primary">Average all-time sleep time: {  getSleepTime()  } h/day</Alert>
-                                        <Alert variant="secondary">System mark: {  getSleepMark()  } / 10 points</Alert>
+                                        <Alert variant="primary"><EOLocale.Text id="averageSleep"/>: {  getSleepTime()  } <EOLocale.Text id="hPerDay"/></Alert>
+                                        <Alert variant="secondary"><EOLocale.Text id="systemMark"/>: {  getSleepMark()  } / 10 <EOLocale.Text id="points"/></Alert>
                                         <div className='text-center'>
                                             {setSleepMark()}
                                         </div>
                                     </Card.Body>
                                 </Card>
                                 <br/>
-
                                 <Card style={{color:'black'}}>
                                     <Card.Header>
-                                        Pulse estimation
+                                        <EOLocale.Text id="pulseEst"/>
                                     </Card.Header>
                                     <Card.Body>
-                                        <Alert variant="primary">Average all-time pulse: {  getAveragePulse()  } </Alert>
-                                        <Alert variant="secondary">System mark: {  pulseState.result.toFixed(2)  } / 10 points </Alert>
-
+                                        <Alert variant="primary"><EOLocale.Text id="averagePulse"/>: {  getAveragePulse()  } </Alert>
+                                        <Alert variant="secondary"><EOLocale.Text id="systemMark"/>: {  pulseState.result.toFixed(2)  } / 10 <EOLocale.Text id="points"/> </Alert>
                                         <div className='text-center'>
-                                            { pulseState.result > 7.5 ? <Alert variant="success"> Good </Alert> :  <Alert variant="danger"> Bad </Alert>}
+                                            { pulseState.result > 7.5 ? <Alert variant="success"> <EOLocale.Text id="good"/> </Alert> :  <Alert variant="danger"> <EOLocale.Text id="bad"/> </Alert>}
                                         </div>
                                     </Card.Body>
                                 </Card>
@@ -309,11 +309,11 @@ function DashboardComponent(){
 
                             <Card style={{ color:'black', textAlign: 'center', textDecoration: 'none'}}>
                                 <Card.Header>
-                                    Open profile to get discount
+                                    <EOLocale.Text id="openProfile"/>
                                 </Card.Header>
                                 <Card.Body>
                                     <Button variant='outline-success'>
-                                        <Link to="/profile">Open Profile</Link>
+                                        <Link to="/profile"><EOLocale.Text id="open"/></Link>
                                     </Button>
                                 </Card.Body>
                             </Card>

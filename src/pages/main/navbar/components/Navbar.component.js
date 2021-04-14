@@ -60,7 +60,7 @@ function NavbarComponent(){
                             <Link to="/dashboard"><EOLocale.Text id="dashboard"/></Link>
                         </Nav.Link>
                         <Nav.Link>
-                        <Link to="/"><EOLocale.Text id="pricing"/></Link>
+                        <Link to="/pricing"><EOLocale.Text id="pricing"/></Link>
                         </Nav.Link>
                         </>
                     }
