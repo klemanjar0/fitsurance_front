@@ -88,7 +88,7 @@ export const fetchMeasures = async (id) => {
 
     const data = await response.json();
     if (response.ok) {
-        return JSON.parse(JSON.stringify(data));
+        return await JSON.parse(JSON.stringify(data));
     }
     throw new FetchError({ ...data, status: response.status });
 };
@@ -116,7 +116,7 @@ export const fetchSteps = async (id) => {
     const data = await response.json();
 
     if (response.ok) {
-        return JSON.parse(JSON.stringify(data));
+        return await JSON.parse(JSON.stringify(data));
     }
     throw new FetchError({ ...data, status: response.status });
 };
@@ -144,7 +144,7 @@ export const fetchPulse = async (id) => {
     const data = await response.json();
 
     if (response.ok) {
-        return JSON.parse(JSON.stringify(data));
+        return await JSON.parse(JSON.stringify(data));
     }
     throw new FetchError({ ...data, status: response.status });
 };
@@ -155,4 +155,38 @@ export const getPulse = ( payload ) => {
             (error)=>{ dispatch({type: failedLoadPulse()})}
         )
     }
+};
+
+export const fetchUsers = async () => {
+    const response = await configuredFetch(
+        `/user/getAllUsers`,
+        'GET',
+
+        {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+    );
+
+    const data = await response.json();
+    if (response.ok) {
+        return await JSON.parse(data);
+    }
+    throw new FetchError({ ...data, status: response.status });
+};
+export const fetchDeleteUser = async (id) => {
+    const response = await configuredFetch(
+        `/user/delete/${id}`,
+        'DELETE',
+
+        {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+        },
+    );
+    const data = await response.json();
+    if (response.ok) {
+        return data;
+    }
+    throw new FetchError({ ...data, status: response.status });
 };

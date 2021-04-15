@@ -3,7 +3,7 @@ import { EOLocale } from 'eo-locale';
 import { locales } from './Locale'
 
 import {useDispatch, useSelector} from "react-redux";
-import {Redirect} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import {Alert, Button, Card, Col, Image, Modal, Row, Spinner} from "react-bootstrap";
 import {getPulse, getSteps} from "../../thunks/User.thunks";
 import {SET_DISCOUNT} from "../../types";
@@ -11,6 +11,7 @@ import Chart from "react-apexcharts";
 import * as moment from "moment";
 
 import picture from './avatar.jpg';
+import AdminComponent from "../admin/Admin.component";
 
 function ProfileComponent(){
 
@@ -113,12 +114,9 @@ function ProfileComponent(){
             setLoading(false);
         }
     }, [globalState.pulse]);
-
     if (!isAuth) {
         return (<Redirect to="/"/>);
     }
-
-
     return(
         <EOLocale.Provider language={lang} locales={locales}>
             {isLoading ?
@@ -199,7 +197,7 @@ function ProfileComponent(){
                                     <hr/>
                                     {
                                         currentUser.name === 'klemanjar0' &&
-                                        <Button block variant="outline-dark"> ADMIN PANEL </Button>
+                                        <Button className="text-decoration-none" block variant="outline-dark"><Link to="/admin">OPEN ADMIN PANEL</Link></Button>
                                     }
                                 </Card.Body>
                             </Card>

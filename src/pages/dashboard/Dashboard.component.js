@@ -80,18 +80,22 @@ function DashboardComponent(){
     }, []);
 
 
-    const loadBitch = (arr) => {
+    const loadBitch = async (arr) => {
         try {
-            return JSON.parse(JSON.stringify(arr));
+            return await JSON.parse(JSON.stringify(arr));
         } catch (e) {
             return arr;
         }
     }
     useEffect(()=>{
-        if(!!pulseState && !!steps && isLoading){
-            setLoading(false);
+        try {
+            measures.map(x=>x);
+            if (!!pulseState && !!steps && isLoading) {
+                setLoading(false);
+            }
         }
-    }, [pulseState, steps]);
+        catch (e){ }
+    }, [pulseState, measures, steps]);
 
     useEffect(()=>{
         if(!isLoading)
@@ -183,15 +187,15 @@ function DashboardComponent(){
     const getLengthSteps = (value) =>{
         return Math.min(value, getParsed().length)
     }
-    const getAllMeasures = () => {
-        return dispatch(getMeasures(userId));
+    const getAllMeasures = async () => {
+        return await dispatch(getMeasures(userId));
     }
-    const getAllSteps = () => {
-        return dispatch(getSteps(userId));
+    const getAllSteps = async () => {
+        return await dispatch(getSteps(userId));
     }
 
-    const getPulseEst = () => {
-        return dispatch(getPulse(userId));
+    const getPulseEst = async () => {
+        return await dispatch(getPulse(userId));
     }
 
     const getSleepTime = () => {

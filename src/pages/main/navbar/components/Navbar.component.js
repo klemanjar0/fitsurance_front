@@ -9,6 +9,7 @@ import { EOLocale } from 'eo-locale';
 import { locales } from './Locale'
 import {clearCurrentUser} from "../../../../actions/SignUp.actions";
 import storage from "../../../../store/sessionStore";
+import {clearDiscount, clearMeasures, clearPulse, clearSteps} from "../../../../actions/Measure.actions";
 
 function NavbarComponent(){
 
@@ -30,6 +31,10 @@ function NavbarComponent(){
 
     const logoutUser = () => {
         dispatch({type: clearCurrentUser()})
+        dispatch({type: clearSteps()})
+        dispatch({type: clearMeasures()})
+        dispatch({type: clearPulse()})
+        dispatch({type: clearDiscount()})
         storage.clearUser();
         return (<Redirect to="/"/>);
     }

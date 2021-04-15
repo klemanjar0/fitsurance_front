@@ -24,6 +24,7 @@ import {useSelector, useDispatch} from "react-redux";
 import storage from "./store/sessionStore";
 import {setCurrentUser} from "./actions/SignUp.actions";
 import PricingComponent from "./pages/pricing/Pricing.component";
+import AdminComponent from "./pages/admin/Admin.component";
 
 
 function App() {
@@ -72,6 +73,10 @@ function App() {
             </Route>
             <Route path="/pricing">
               <PricingComponent/>
+              <AboutComponent/>
+            </Route>
+            <Route path="/admin">
+              <AdminComponent/>
               <AboutComponent/>
             </Route>
               <Route path="/">

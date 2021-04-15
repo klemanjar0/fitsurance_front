@@ -74,7 +74,7 @@ function PricingComponent() {
                             </Card.Footer>
                         </Card>
                     </CardColumns>
-                    {globalState.app.discount > 0 && <Alert block variant="success" className="text-center mt-5 mb-5">{globalState.app.discount}% <EOLocale.Text id="month"/></Alert>}
+                    {globalState.app.discount > 0 && <Alert block variant="success" className="text-center mt-5 mb-5">{globalState.app.discount}% <EOLocale.Text id="discount"/></Alert>}
                 </div>
             </EOLocale.Provider>
         </div>

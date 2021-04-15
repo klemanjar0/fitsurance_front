@@ -18,3 +18,5 @@ export const clearSteps = () => "CLEAR_STEPS"
 export const loadPulse = () => "LOAD_PULSE"
 export const failedLoadPulse = () => "FAILED_LOAD_PULSE"
 export const clearPulse = () =>  "CLEAR_PULSE"
+
+export const clearDiscount= () =>  "CLEAR_DISCOUNT"
