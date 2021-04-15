@@ -37,7 +37,7 @@ function PricingComponent() {
                                 <Button block variant="primary"> <EOLocale.Text id="buy"/> </Button>
                             </Card.Footer>
                         </Card>
-                        <Card className="text-lg-right">
+                        <Card className="text-lg-right mt-2">
                             <Card.Img variant="top" src={bphoto3} />
                             <Card.Body>
                                 <Card.Title style={{fontSize: '25px'}}><EOLocale.Text id="standard"/></Card.Title>
@@ -55,7 +55,7 @@ function PricingComponent() {
                                 <Button block variant="primary"> <EOLocale.Text id="buy"/> </Button>
                             </Card.Footer>
                         </Card>
-                        <Card className="text-lg-right">
+                        <Card className="text-lg-right mt-4">
                             <Card.Img variant="top" src={bphoto4} />
                             <Card.Body>
                                 <Card.Title style={{fontSize: '35px'}}><EOLocale.Text id="full"/></Card.Title>
@@ -74,7 +74,6 @@ function PricingComponent() {
                             </Card.Footer>
                         </Card>
                     </CardColumns>
-                    {globalState.app.discount > 0 && <Alert block variant="success" className="text-center mt-5 mb-5">{globalState.app.discount}% <EOLocale.Text id="discount"/></Alert>}
                 </div>
             </EOLocale.Provider>
         </div>

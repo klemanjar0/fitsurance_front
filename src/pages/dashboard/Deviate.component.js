@@ -38,14 +38,14 @@ export default function DeviateComponent({pulse, sleep}) {
                         offsetY: -10,
                         show: true,
                         color: "#FFF",
-                        fontSize: "18px"
+                        fontSize: "50px"
                     },
                     value: {
-                        color: "#FFF",
+                        color: "#68de7a",
                         fontSize: "30px",
                         show: true,
                         formatter: function (val) {
-                            return val + ' pts'
+                            return val
                         }
                     }
                 },
@@ -67,7 +67,7 @@ export default function DeviateComponent({pulse, sleep}) {
         stroke: {
             lineCap: "round",
         },
-        labels: ["Pulse"]
+        labels: ["💓"]
     });
     const [options2, setOptions2] = useState({
         chart: {
@@ -89,14 +89,14 @@ export default function DeviateComponent({pulse, sleep}) {
                         offsetY: -10,
                         show: true,
                         color: "#FFF",
-                        fontSize: "18px"
+                        fontSize: "50px"
                     },
                     value: {
-                        color: "#FFF",
+                        color: "#68de7a",
                         fontSize: "30px",
                         show: true,
                         formatter: function (val) {
-                            return val + ' pts'
+                            return val
                         }
                     }
                 },
@@ -120,7 +120,7 @@ export default function DeviateComponent({pulse, sleep}) {
         stroke: {
             lineCap: "round",
         },
-        labels: ["Sleep"]
+        labels: ["😴"]
     });
     const [series, setSeries] = useState([(pulse*10).toFixed(2)]);
     const [series2, setSeries2] = useState([(sleep*10).toFixed(2)]);

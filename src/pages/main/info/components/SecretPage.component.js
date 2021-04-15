@@ -6,48 +6,34 @@ import React from "react";
 const styles = {
     wrap: {
         margin: '5rem auto',
-        width: '600px',
+        width: '1000px',
         textAlign : 'center'
     },
-    text:{
-      fontSize : '1rem'
-    }
 }
 
 function SecretComponent() {
     return (
         <>
-            <hr/>
             <div style={styles.wrap}>
-                <Card variant="light">
-                        <Card.Body>
-                            <Badge variant="dark">
-                                <span style={styles.text}>
-                                    Doubt anything you want.
-                                </span>
-                            </Badge>
-                            <br/>
-                            <Badge variant="dark">
-                                <span style={styles.text}>
-                                    But never about my love gainst her.
-                                </span>
-                            </Badge>
-                            <br/>
-                            <Badge variant="dark">
-                                <span style={styles.text}>
-                                    Don't ever think I can forget.
-                                </span>
-                            </Badge>
-                            <br/>
-                            <Badge variant="dark">
-                                <span style={styles.text}>
-                                    And let cactus shine.
-                                </span>
-                            </Badge>
-                    </Card.Body>
-                </Card>
+
+                <h1>
+                    Doubt anything you want.
+                </h1>
+                <br/>
+                <h1>
+                    But never about my love gainst her.
+                </h1>
+                <br/>
+                <h1>
+                    Don't ever think I can forget.
+                </h1>
+                <br/>
+                <h1>
+                    Cactus live forever.
+                </h1>
+                <br/>
+                <h1>🌵</h1>
             </div>
-            <hr/>
         </>
     )
 }

@@ -143,7 +143,7 @@ function ProfileComponent(){
                     </div>
                     <Row style={{marginTop: '130px'}}>
                         <Col xs={12} md={8}>
-                            <Alert variant="dark">
+                            <Alert variant="primary">
                                 <div
                                     style={{marginLeft: '1rem', marginTop: '5px', fontSize: '28px', color: 'black', textAlign: 'center'}}>
                                     {currentUser.name}'s <EOLocale.Text id="activity"/>
@@ -180,7 +180,7 @@ function ProfileComponent(){
                             <Card bg="light">
                                 <div
                                     style={{margin: '2rem auto', width: 'inherit', fontSize: '20px', color: '#0377fc'}}>
-                                    {currentUser.name}'s <EOLocale.Text id="data"/>
+                                    {currentUser.name}<EOLocale.Text id="data"/>
                                 </div>
                                 <Card.Body className="text-center">
                                     <div className="m-3 shadow">

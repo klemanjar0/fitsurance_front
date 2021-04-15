@@ -68,7 +68,7 @@ export const userLoginRequest = ( payload ) => {
     return (dispatch) => {
         return fetchLogin(payload).then(
             (data) => {dispatch( {type : setCurrentUser(), payload: {...data.user, token: data.token}})},
-            (error)=>{ dispatch({type: failedLogin()})}
+            (error)=>{ dispatch({type: failedLogin()}); }
         )
     }
 };

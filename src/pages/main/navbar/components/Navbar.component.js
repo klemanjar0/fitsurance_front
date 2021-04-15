@@ -1,5 +1,16 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {Badge, Button, ButtonGroup, Container, Form, FormControl, Nav, Navbar, ToggleButton} from "react-bootstrap";
+import {
+    Badge,
+    Button,
+    ButtonGroup,
+    Container,
+    Form,
+    FormControl,
+    Image,
+    Nav,
+    Navbar,
+    ToggleButton
+} from "react-bootstrap";
 import './Navbar.css';
 import {BrowserRouter as Router, Link, Redirect} from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,6 +21,7 @@ import { locales } from './Locale'
 import {clearCurrentUser} from "../../../../actions/SignUp.actions";
 import storage from "../../../../store/sessionStore";
 import {clearDiscount, clearMeasures, clearPulse, clearSteps} from "../../../../actions/Measure.actions";
+import IconLogo from '../rpg_fantasy.png'
 
 function NavbarComponent(){
 
@@ -46,9 +58,9 @@ function NavbarComponent(){
             <EOLocale.Provider language={lang} locales={locales}>
 
         <Navbar bg="light" variant="light" sticky="top">
-            <Container style = {{width:'100%'}}>
-                <Navbar.Brand>
-                    <Link to="/" style={{ textDecoration: 'none' }}>FitSurance</Link>
+            <Container  style = {{width:'100%'}}>
+                <Navbar.Brand className='text-uppercase'>
+                    <Link to="/" style={{ textDecoration: 'none'}}><b>FitSurance</b></Link>
                 </Navbar.Brand>
                 <Nav className="mr-auto">
                     {

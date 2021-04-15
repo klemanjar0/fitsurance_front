@@ -58,7 +58,8 @@ function DashboardComponent(){
     const styles = {
         wrap : {
             width: '1200px',
-            margin: '1rem auto'
+            margin: '1rem auto',
+            paddingTop:'15px'
         },
         margin:{
           margin: '10px'
@@ -93,7 +94,8 @@ function DashboardComponent(){
         try {
             measures.map(x=>x);
             if (!!pulseState && !!steps && isLoading) {
-                setLoading(false);
+                setTimeout(()=>{setLoading(false);},500)
+                //setLoading(false);
             }
         }
         catch (e){ }
@@ -287,9 +289,9 @@ function DashboardComponent(){
                         </Card>
                     </Col>
                     <Col sm={4}>
-                        <Card bg="dark">
+                        <Card bg="dark" style={{paddingTop: "10px"}}>
                             <Card.Body>
-                                    <DeviateComponent pulse={pulseState.result} sleep={ steps.result } />
+                                <DeviateComponent pulse={pulseState.result} sleep={ steps.result } />
                                 <br/>
                                 <Card style={{color:'black'}}>
                                     <Card.Header>

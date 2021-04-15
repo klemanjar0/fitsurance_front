@@ -12,12 +12,20 @@ import appback from '../appback4.jpg'
 
 function SighInComponent(){
     const [userLog, setUserLog] = useState({});
+    const [wrong, setWrong] = useState(false);
+
     const isAuth = useSelector((state) => !!state.currentUser.name);
     const lang = useSelector(state => state.locale.language)
     const dispatch = useDispatch();
 
     const loginUser = () => {
-        return dispatch(userLoginRequest(userLog));
+        try{
+            const res = dispatch(userLoginRequest(userLog))
+            return res
+        }
+        catch (e){
+            setWrong(true);
+        }
     }
 
     const handleSubmit = (event) => {
@@ -72,7 +80,7 @@ function SighInComponent(){
                                 <Button variant="outline-primary" type="submit" onClick={loginUser} className=" w-100 mt-5 float-right">
                                     <EOLocale.Text id="login"/>
                                 </Button>
-
+                                {wrong && <span className="warning">Wrong password or email.</span>}
                                 <Link style={{marginTop: '20px', float: 'left'}}><EOLocale.Text id="forgot"/></Link>
                                 <Link to="/registration" style={{marginTop: '20px', float: 'right'}}><EOLocale.Text id="createnew"/></Link>
                             </Form>
