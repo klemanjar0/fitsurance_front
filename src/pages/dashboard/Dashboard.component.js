@@ -9,6 +9,7 @@ import {fetchSteps, getMeasures, getPulse, getSteps} from "../../thunks/User.thu
 
 import Chart from "react-apexcharts";
 import * as moment from "moment";
+import DeviateComponent from "./Deviate.component";
 
 
 
@@ -87,6 +88,7 @@ function DashboardComponent(){
             return arr;
         }
     }
+
     useEffect(()=>{
         try {
             measures.map(x=>x);
@@ -173,10 +175,13 @@ function DashboardComponent(){
         theme: {
             monochrome: {
                 enabled: true,
-                color: '#0356fc',
+                color: '#68de7a',
                 shadeTo: 'light',
                 shadeIntensity: 0.65
             }
+        },
+        stroke: {
+            curve: 'smooth',
         }
     }
     const sliderHandler = (e) => {
@@ -282,15 +287,16 @@ function DashboardComponent(){
                         </Card>
                     </Col>
                     <Col sm={4}>
-                        <Card bg="secondary">
+                        <Card bg="dark">
                             <Card.Body>
+                                    <DeviateComponent pulse={pulseState.result} sleep={ steps.result } />
+                                <br/>
                                 <Card style={{color:'black'}}>
                                     <Card.Header>
                                         <EOLocale.Text id="sleepEst"/>
                                     </Card.Header>
                                     <Card.Body>
                                         <Alert variant="primary"><EOLocale.Text id="averageSleep"/>: {  getSleepTime()  } <EOLocale.Text id="hPerDay"/></Alert>
-                                        <Alert variant="secondary"><EOLocale.Text id="systemMark"/>: {  getSleepMark()  } / 10 <EOLocale.Text id="points"/></Alert>
                                         <div className='text-center'>
                                             {setSleepMark()}
                                         </div>
@@ -303,7 +309,6 @@ function DashboardComponent(){
                                     </Card.Header>
                                     <Card.Body>
                                         <Alert variant="primary"><EOLocale.Text id="averagePulse"/>: {  getAveragePulse()  } </Alert>
-                                        <Alert variant="secondary"><EOLocale.Text id="systemMark"/>: {  pulseState.result.toFixed(2)  } / 10 <EOLocale.Text id="points"/> </Alert>
                                         <div className='text-center'>
                                             { pulseState.result > 7.5 ? <Alert variant="success"> <EOLocale.Text id="good"/> </Alert> :  <Alert variant="danger"> <EOLocale.Text id="bad"/> </Alert>}
                                         </div>
@@ -311,7 +316,7 @@ function DashboardComponent(){
                                 </Card>
                             </Card.Body>
 
-                            <Card style={{ color:'black', textAlign: 'center', textDecoration: 'none'}}>
+                            <Card style={{ color:'black', textAlign: 'center', textDecoration: 'none', margin: '2px'}}>
                                 <Card.Header>
                                     <EOLocale.Text id="openProfile"/>
                                 </Card.Header>

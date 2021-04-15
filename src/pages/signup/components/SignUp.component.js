@@ -8,6 +8,7 @@ import {userRegisterRequest} from "../../../thunks/User.thunks";
 import { EOLocale } from 'eo-locale';
 import { locales } from './Locale'
 
+
 function SignUpComponent(){
     const [validated, setValidated] = useState(false);
     const [user, setUser] = useState({});
@@ -42,6 +43,7 @@ function SignUpComponent(){
     return(
         <div>
             <EOLocale.Provider language={lang} locales={locales}>
+
             <Card bg='light'>
                 <h1 style={{ textAlign: 'left', margin: "1rem"}}><b><EOLocale.Text id="registerNew"/></b></h1>
                 <hr/>

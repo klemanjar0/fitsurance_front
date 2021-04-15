@@ -52,7 +52,6 @@ function App() {
               <div className='wrapper'>
                 <SignUpComponent />
               </div>
-              <AboutComponent/>
             </Route>
             <Route path="/aboutus">
               <SecretComponent/>
@@ -66,10 +65,9 @@ function App() {
               <AboutComponent/>
             </Route>
             <Route path="/login">
-              <div className='wrapper'>
-                <SighInComponent/>
+              <div>
+              <SighInComponent/>
               </div>
-              <AboutComponent />
             </Route>
             <Route path="/pricing">
               <PricingComponent/>

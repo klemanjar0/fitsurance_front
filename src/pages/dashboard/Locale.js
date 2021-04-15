@@ -18,6 +18,7 @@ export const locales = [
             days: "days",
             pulseData: "Pulse data",
             sleepPerDay: "Sleep time per day",
+            act: "Activity Mark"
 
         }
     },
@@ -40,6 +41,7 @@ export const locales = [
             days: "днів",
             pulseData: "Дані пусьсу",
             sleepPerDay: "Кількість сну на день",
+            act: "Оцiнка"
         }
     },
 ];

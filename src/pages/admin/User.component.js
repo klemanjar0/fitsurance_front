@@ -27,17 +27,30 @@ function UserComponent({user , update}) {
         <Card className="m-3">
             <Card.Body>
                 <div style={{fontSize: '1rem'}}>
-                    {currentUser.name}
-                    <span style={{float: 'right', top: '10px'}}>
-                        {currentUser.id}
+                    <h2 >
+                        {currentUser.name}
+                        <span style={{float: 'right', top: '10px'}}>
+                        ID: {currentUser.id}
                     </span>
+                    </h2>
+                </div>
+                <hr/>
+
+                <div>
+                    <b>Full Name:</b> {currentUser.firstname} {currentUser.lastname}
+                </div>
+                <div>
+                    <b>Email:</b> {currentUser.email}
                 </div>
                 <hr/>
                 <div>
-                    {currentUser.firstname} {currentUser.lastname}
+                    <b>Phone:</b> {currentUser.phone}
                 </div>
                 <div>
-                    {currentUser.email}
+                    <b>Sex:</b> {currentUser.sex}
+                </div>
+                <div>
+                    <b>Birthday:</b> {moment(currentUser.birthday).format("DD MMM YYYY")}
                 </div>
                 <hr/>
                 <div className='my-auto'>
