@@ -11,11 +11,11 @@ code {
   monospace;
 }
 .fooont{
-  font-family: Gotham
+  font-family: Lato
 }
 .wrapper{
   padding-top: 3rem;
   margin: 0 auto;
   width: 1000px;
-  font-family: Gotham;
+  font-family: Lato;
 }

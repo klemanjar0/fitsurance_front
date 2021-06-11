@@ -24,7 +24,7 @@ function HomeComponent(){
         <div style={{color: 'white'}}>
             <div className="wrapper">
                 <ModalHeader>
-                    <h1 style={{fontSize : '45px', color: 'white'}}>
+                    <h1 style={{fontSize : '65px', color: 'white'}}>
                         <b>FitSurance</b>
                     </h1>
                 </ModalHeader>

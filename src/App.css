@@ -12,19 +12,23 @@ div {
 
 @font-face {
   font-family: 'Lato';
-  src: local('Lato'), url(./fonts/GothamRus/GothaProLig.otf) format('opentype');
+  src: local('Lato'), url(./fonts/Curcular/CircularStd-Bold.ttf) format('truetype');
+  font-weight: 900;
+  font-style: normal;
 }
 
 @font-face {
   font-family: 'Lato';
-  font-weight: 900;
-  src: local('Lato'), url(./fonts/GothamRus/GothaProBol.otf) format('opentype');
+  font-weight: 700;
+  src: local('Lato'), url(./fonts/Curcular/CircularStd-Medium.ttf) format('truetype');
+  font-style: normal;
 }
 
 @font-face {
   font-family: 'Lato';
-  font-weight: 900;
-  src: local('Lato'), url(./fonts/GothamRus/GothaProReg.otf) format('opentype');
+  font-weight: 400;
+  src: local('Lato'), url(./fonts/Curcular/CircularStd-Book.ttf) format('truetype');
+  font-style: normal;
 }
 .App-header {
   background-color: #282c34;
@@ -40,4 +44,5 @@ div {
 .App-link {
   color: #61dafb;
 }
+
 

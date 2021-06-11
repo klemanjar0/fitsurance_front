@@ -82,7 +82,7 @@ function DashboardComponent(){
     }, []);
 
 
-    const loadBitch = async (arr) => {
+    const loadUp = async (arr) => {
         try {
             return await JSON.parse(JSON.stringify(arr));
         } catch (e) {
@@ -122,13 +122,13 @@ function DashboardComponent(){
         setSleep({ average: (getStepData()/60).toFixed(2), result: (getStepMark()).toFixed(2) } );
         const length = getParsed().length;
 
-        const dates = getParsed().map(x=>x.date).slice(Math.max(length - days, 0));
-        const values = getParsed().map(x=>x.value).slice(Math.max(length - days, 0));
+        const dates = getParsed().map(x=>x.date).reverse().slice(Math.max(length - days, 0));
+        const values = getParsed().map(x=>x.value).reverse().slice(Math.max(length - days, 0));
         setXaxis(
             {
                 categories: dates
             }
-        )
+        );
         setSeries(
             [
                 {
@@ -137,8 +137,8 @@ function DashboardComponent(){
                 }
             ]
         )
-        const pulses = measures.map(x=>x.heart_rate).slice(100);
-        const timing = measures.map(x=> moment(x.date_measure).format('YYYY MM DD HH:MM:SS')).slice(100);
+        const pulses = measures.map(x=>x.heart_rate).slice(100).reverse();
+        const timing = measures.map(x=> moment(x.date_measure).format('YYYY MM DD HH:MM:SS')).slice(100).reverse();
 
         setXaxisSecond(
             {
@@ -247,7 +247,7 @@ function DashboardComponent(){
 
                 :
 
-            <Container style={styles.wrap}>
+            <Container style={styles.wrap} className="fooont">
                 <Row style={styles.margin && styles.textMain}>
                     <Col sm={8}>
                         <Card bg="light">

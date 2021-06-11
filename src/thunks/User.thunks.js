@@ -190,3 +190,6 @@ export const fetchDeleteUser = async (id) => {
     }
     throw new FetchError({ ...data, status: response.status });
 };
+
+
+
